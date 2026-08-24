@@ -53,6 +53,49 @@ SELECT
 EOMONTH(CreationTime) EOM
 FROM Sales.Orders;
 
+--------------------------------------------------------------------------
+--@formatting and casting
+--------------------------------------------------------------------------
 
+--FORMAT(value,format,[culture])
 
+SELECT 
+0rderID,CreationTime,
+FORMAT(CreationTime,'dd') as "dd",
+FORMAT(CreationTime,'ddd') as "ddd",
+FORMAT(CreationTime,'dddd') as "dddd",
+FORMAT(CreationTime,'MM') as "MM",
+FORMAT(CreationTime,'MMM') as "MMM",
+FORMAT(CreationTime,'MMMM') as "MMMM",
+FORMAT(CreationTime,'yy') as "yy",
+FORMAT(CreationTime,'yyy') as "yyy",
+FORMAT(CreationTime,'yyyy') as "yyyy",
+FORMAT(CreationTime,'mm') as "mm",
+FORMAT(CreationTime,'mmm') as "mmm",
+FORMAT(CreationTime,'mmmm') as "mmmm",
+FORMAT(CreationTime,'HH') as "HH",
+FORMAT(CreationTime,'HHH') as "HHH",
+FORMAT(CreationTime,'dd-MM-yyy') as "europian"
+FROM Sales.Orders;
 
+--------------------------------------------------------------------------
+
+--convert(data_type,value,[style])
+
+Select
+CONVERT(int,'678')as "int",
+CONVERT(varchar,CreationTime)
+from Sales.Orders;
+
+--------------------------------------------------------------------------
+--cast(value as data_type)
+
+Select
+CAST('123' as int),
+CAST('12-12-2025' as date)
+
+--------------------------------------------------------------------------
+--@calculations
+--------------------------------------------------------------------------
+
+--DATEADD

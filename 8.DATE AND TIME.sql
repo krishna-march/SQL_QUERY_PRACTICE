@@ -98,4 +98,31 @@ CAST('12-12-2025' as date)
 --@calculations
 --------------------------------------------------------------------------
 
---DATEADD
+--DATEADD(Part,Interval,Date)
+
+select OrderID,OrderDate,
+DATEADD(YEAR,3,OrderDate) as '+3 year',
+DATEADD(MONTH,2,OrderDate) as '+2 month'
+from Sales.Orders;
+
+--------------------------------------------------------------------------
+
+--DATEDIFF(Part,Start_Date,End_Date)
+
+Select EmployeeID,BirthDate,
+DATEDIFF(YEAR,BirthDate,GETDATE())
+from Sales.Employees;
+
+--------------------------------------------------------------------------
+select OrderID,OrderDate,
+LAG(OrderDate) over (order by orderdate) as 'previous order_date',
+DATEDIFF(DAY,LAG(OrderDate) over (order by orderdate),OrderDate) 
+from Sales.Orders;
+
+--------------------------------------------------------------------------
+--@Validation
+--------------------------------------------------------------------------
+--ISDATE(Value)
+
+select
+ISDATE('12-12-26');
